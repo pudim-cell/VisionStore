@@ -1,85 +1,90 @@
-const cart = [];
-let total = 0;
-
-function addToCart(product) {
-  cart.push(product);
-
-  const cartItems = document.getElementById('cart-items');
-  const li = document.createElement('li');
-  li.textContent = product;
-  cartItems.appendChild(li);
-
-  document.getElementById('cart-count').innerText = cart.length;
-
-  total += 100;
-  document.getElementById('total').innerText = `R$ ${total}`;
+* {
+  padding: 15px 35px;
+  border: none;
+  border-radius: 12px;
+  background: #00bfff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-function sendMessage() {
-  const input = document.getElementById('user-input');
-  const text = input.value;
-
-  if(text.trim() === '') return;
-
-  const chatBox = document.getElementById('chat-box');
-
-  const userMessage = document.createElement('div');
-  userMessage.classList.add('message', 'user');
-  userMessage.innerText = text;
-  chatBox.appendChild(userMessage);
-
-  let response = 'Não entendi sua pergunta.';
-
-  const lower = text.toLowerCase();
-
-  if(lower.includes('notebook')) {
-    response = 'Recomendo o Notebook Gamer 🚀 Excelente para jogos e desempenho.';
-  }
-  else if(lower.includes('fone')) {
-    response = 'O Fone Bluetooth possui ótima qualidade sonora 🎧';
-  }
-  else if(lower.includes('mouse')) {
-    response = 'O Mouse Gamer é perfeito para alta performance 🖱️';
-  }
-  else if(lower.includes('celular')) {
-    response = 'O Smartphone Pro possui câmera incrível 📱';
-  }
-  else if(lower.includes('barato')) {
-    response = 'O produto mais barato disponível é o Fone Bluetooth.';
-  }
-  else if(lower.includes('melhor')) {
-    response = 'O Notebook Gamer é o produto premium da loja ⭐';
-  }
-
-  setTimeout(() => {
-
-    const botMessage = document.createElement('div');
-    botMessage.classList.add('message', 'bot');
-    botMessage.innerText = response;
-    chatBox.appendChild(botMessage);
-
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-  }, 700);
-
-  input.value = '';
+.hero-content button:hover {
+  transform: scale(1.05);
 }
 
-const search = document.getElementById('search');
+.search-container {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
 
-search.addEventListener('keyup', () => {
+.search-container input {
+  width: 100%;
+  max-width: 700px;
+  padding: 16px;
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+}
 
-  const value = search.value.toLowerCase();
-  const cards = document.querySelectorAll('.card');
+.products {
+  padding: 20px 50px 80px;
 
-  cards.forEach(card => {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
 
-    const title = card.querySelector('h3').innerText.toLowerCase();
+.card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
 
-    if(title.includes(value)) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
+  transition: 0.3s;
+}
 
-});
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  margin-bottom: 10px;
+}
+
+.price {
+  color: #00bfff;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.card-content button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #00bfff;
+  color: white;
+  cursor: pointer;
+}
+
+.ai-section,
+.cart-section {
+  padding: 80px 20px;
+}
+
+.ai-section h2,
+.cart-section h2 {
+  text-align: center;
+}
