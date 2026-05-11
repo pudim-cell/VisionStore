@@ -1,90 +1,70 @@
-* {
-  padding: 15px 35px;
-  border: none;
-  border-radius: 12px;
-  background: #00bfff;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.3s;
+const cartItems = document.getElementById('cart-items');
+const totalElement = document.getElementById('total');
+const cartCount = document.getElementById('cart-count');
+const searchInput = document.getElementById('search');
+const cards = document.querySelectorAll('.card');
+
+let total = 0;
+let quantity = 0;
+
+function addToCart(name, price) {
+
+  const item = document.createElement('li');
+  item.innerText = `${name} - R$ ${price}`;
+
+  cartItems.appendChild(item);
+
+  total += price;
+  quantity++;
+
+  totalElement.innerText = `R$ ${total.toLocaleString('pt-BR')}`;
+  cartCount.innerText = quantity;
 }
 
-.hero-content button:hover {
-  transform: scale(1.05);
-}
+searchInput.addEventListener('keyup', () => {
 
-.search-container {
-  padding: 40px 20px;
-  display: flex;
-  justify-content: center;
-}
+  const value = searchInput.value.toLowerCase();
 
-.search-container input {
-  width: 100%;
-  max-width: 700px;
-  padding: 16px;
-  border-radius: 12px;
-  border: none;
-  font-size: 1rem;
-}
+  cards.forEach(card => {
 
-.products {
-  padding: 20px 50px 80px;
+    const title = card.querySelector('h3').innerText.toLowerCase();
 
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-}
+    if(title.includes(value)) {
+      card.style.display = 'block';
+    }
+    else {
+      card.style.display = 'none';
+    }
 
-.card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.1);
+  });
 
-  transition: 0.3s;
-}
+});
 
-.card:hover {
-  transform: translateY(-8px);
-}
+function sendMessage() {
 
-.card img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-}
+  const input = document.getElementById('user-input');
+  const chatBox = document.getElementById('chat-box');
 
-.card-content {
-  padding: 20px;
-}
+  const text = input.value.trim();
 
-.card-content h3 {
-  margin-bottom: 10px;
-}
+  if(text === '') return;
 
-.price {
-  color: #00bfff;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
+  const userMessage = document.createElement('div');
+  userMessage.classList.add('message', 'user-message');
+  userMessage.innerText = text;
 
-.card-content button {
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  background: #00bfff;
-  color: white;
-  cursor: pointer;
-}
+  chatBox.appendChild(userMessage);
 
-.ai-section,
-.cart-section {
-  padding: 80px 20px;
-}
+  let response = 'Ainda estou aprendendo 🤖';
 
-.ai-section h2,
-.cart-section h2 {
-  text-align: center;
+  const msg = text.toLowerCase();
+
+  if(msg.includes('notebook')) {
+    response = 'O Notebook Gamer é perfeito para alta performance 🚀';
+  }
+  else if(msg.includes('fone')) {
+    response = 'O Fone Bluetooth possui excelente qualidade sonora 🎧';
+  }
+  else if(msg.includes('mouse')) {
+    response = 'O Mouse Gamer oferece ótima precisão 🖱️';
 }
