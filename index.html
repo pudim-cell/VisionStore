@@ -1,567 +1,75 @@
-# NeoShop AI — Loja Virtual Fake com IA
-
-## index.html
-
-```html
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NeoShop AI</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-
-  <header>
-    <div class="logo">NeoShop <span>AI</span></div>
-
-    <nav>
-      <a href="#">Home</a>
-      <a href="#produtos">Produtos</a>
-      <a href="#chat">IA</a>
-      <a href="#carrinho">Carrinho</a>
-    </nav>
-
-    <div class="cart-icon">
-      🛒 <span id="cart-count">0</span>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Loja Futurista com Inteligência Artificial</h1>
-      <p>
-        Descubra produtos incríveis com recomendações inteligentes.
-      </p>
-      <button>Explorar Produtos</button>
-    </div>
-  </section>
-
-  <section class="search-section">
-    <input type="text" id="search" placeholder="Pesquisar produtos...">
-  </section>
-
-  <section class="products" id="produtos">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?q=80&w=1200" alt="Notebook">
-      <h3>Notebook Gamer</h3>
-      <p>R$ 5.499</p>
-      <button onclick="addToCart('Notebook Gamer')">Adicionar</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=1200" alt="Headset">
-      <h3>Headset RGB</h3>
-      <p>R$ 399</p>
-      <button onclick="addToCart('Headset RGB')">Adicionar</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200" alt="Relógio">
-      <h3>Smartwatch</h3>
-      <p>R$ 899</p>
-      <button onclick="addToCart('Smartwatch')">Adicionar</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=1200" alt="Mouse">
-      <h3>Mouse Gamer</h3>
-      <p>R$ 249</p>
-      <button onclick="addToCart('Mouse Gamer')">Adicionar</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200" alt="Fone">
-      <h3>Fone Bluetooth</h3>
-      <p>R$ 199</p>
-      <button onclick="addToCart('Fone Bluetooth')">Adicionar</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200" alt="Celular">
-      <h3>Smartphone Pro</h3>
-      <p>R$ 4.299</p>
-      <button onclick="addToCart('Smartphone Pro')">Adicionar</button>
-    </div>
-
-  </section>
-
-  <section class="ai-section" id="chat">
-    <h2>Assistente IA</h2>
-
-    <div class="chat-box" id="chat-box">
-      <div class="message bot">
-        Olá! Sou a IA da NeoShop 🤖<br>
-        Posso recomendar produtos para você.
+          <h3>Headset RGB</h3>
+          <p class="price">R$ 399</p>
+          <button onclick="addToCart('Headset RGB', 399)">
+            Adicionar ao Carrinho
+          </button>
+        </div>
       </div>
-    </div>
 
-    <div class="chat-input">
-      <input type="text" id="user-input" placeholder="Digite sua pergunta...">
-      <button onclick="sendMessage()">Enviar</button>
-    </div>
-  </section>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200" alt="Smartwatch">
 
-  <section class="cart-section" id="carrinho">
-    <h2>Carrinho</h2>
-    <ul id="cart-items"></ul>
-    <h3>Total: <span id="total">R$ 0</span></h3>
-    <button class="checkout">Finalizar Compra</button>
-  </section>
+        <div class="card-content">
+          <h3>Smartwatch</h3>
+          <p class="price">R$ 899</p>
+          <button onclick="addToCart('Smartwatch', 899)">
+            Adicionar ao Carrinho
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=1200" alt="Mouse Gamer">
+
+        <div class="card-content">
+          <h3>Mouse Gamer</h3>
+          <p class="price">R$ 249</p>
+          <button onclick="addToCart('Mouse Gamer', 249)">
+            Adicionar ao Carrinho
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="ai-section" id="chat">
+      <h2>Assistente IA</h2>
+
+      <div class="chat-box" id="chat-box">
+        <div class="message bot-message">
+          Olá 👋 Sou a IA da NeoShop. Posso recomendar produtos.
+        </div>
+      </div>
+
+      <div class="chat-controls">
+        <input type="text" id="user-input" placeholder="Digite sua pergunta..." />
+        <button onclick="sendMessage()">Enviar</button>
+      </div>
+    </section>
+
+    <section class="cart-section" id="carrinho">
+      <h2>Seu Carrinho</h2>
+
+      <ul id="cart-items"></ul>
+
+      <div class="total-box">
+        Total: <span id="total">R$ 0,00</span>
+      </div>
+
+      <button class="checkout-btn">
+        Finalizar Compra
+      </button>
+    </section>
+
+  </main>
 
   <footer>
-    <p>© 2026 NeoShop AI — Todos os direitos reservados.</p>
+    <p>
+      © 2026 NeoShop AI — Todos os direitos reservados.
+    </p>
   </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
-```
-
----
-
-## style.css
-
-```css
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #050816;
-  color: white;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 50px;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.logo {
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.logo span {
-  color: #00bfff;
-}
-
-nav {
-  display: flex;
-  gap: 20px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-nav a:hover {
-  color: #00bfff;
-}
-
-.cart-icon {
-  font-size: 1.2rem;
-}
-
-.hero {
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
-  background: linear-gradient(to right, #000428, #004e92);
-}
-
-.hero-text h1 {
-  font-size: 4rem;
-  margin-bottom: 20px;
-}
-
-.hero-text p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-.hero button {
-  padding: 15px 40px;
-  border: none;
-  border-radius: 10px;
-  background: #00bfff;
-  color: white;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: 0.3s;
-}
-
-.hero button:hover {
-  transform: scale(1.05);
-}
-
-.search-section {
-  padding: 40px;
-  display: flex;
-  justify-content: center;
-}
-
-.search-section input {
-  width: 60%;
-  padding: 15px;
-  border-radius: 10px;
-  border: none;
-  font-size: 1rem;
-}
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  padding: 50px;
-}
-
-.card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 20px;
-  overflow: hidden;
-  transition: 0.3s;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.card:hover {
-  transform: translateY(-10px);
-}
-
-.card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
-.card h3 {
-  padding: 15px;
-}
-
-.card p {
-  padding: 0 15px 15px;
-  color: #00bfff;
-  font-weight: 600;
-}
-
-.card button {
-  margin: 15px;
-  width: calc(100% - 30px);
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  background: #00bfff;
-  color: white;
-  cursor: pointer;
-}
-
-.ai-section {
-  padding: 60px 20px;
-}
-
-.ai-section h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 2.5rem;
-}
-
-.chat-box {
-  max-width: 800px;
-  margin: auto;
-  height: 400px;
-  overflow-y: auto;
-  background: rgba(255,255,255,0.05);
-  border-radius: 20px;
-  padding: 20px;
-}
-
-.message {
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 15px;
-  max-width: 70%;
-}
-
-.bot {
-  background: #00bfff;
-}
-
-.user {
-  background: #333;
-  margin-left: auto;
-}
-
-.chat-input {
-  display: flex;
-  max-width: 800px;
-  margin: 20px auto;
-  gap: 10px;
-}
-
-.chat-input input {
-  flex: 1;
-  padding: 15px;
-  border-radius: 10px;
-  border: none;
-}
-
-.chat-input button {
-  padding: 15px 25px;
-  border: none;
-  border-radius: 10px;
-  background: #00bfff;
-  color: white;
-  cursor: pointer;
-}
-
-.cart-section {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.cart-section ul {
-  list-style: none;
-  margin: 20px 0;
-}
-
-.cart-section li {
-  margin: 10px 0;
-}
-
-.checkout {
-  padding: 15px 30px;
-  border: none;
-  border-radius: 10px;
-  background: limegreen;
-  color: white;
-  cursor: pointer;
-}
-
-footer {
-  text-align: center;
-  padding: 30px;
-  background: #02040f;
-}
-
-@media(max-width: 768px) {
-
-  header {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .hero-text h1 {
-    font-size: 2.5rem;
-  }
-
-  .search-section input {
-    width: 100%;
-  }
-
-  nav {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-}
-```
-
----
-
-## script.js
-
-```javascript
-const cart = [];
-let total = 0;
-
-function addToCart(product) {
-  cart.push(product);
-
-  const cartItems = document.getElementById('cart-items');
-  const li = document.createElement('li');
-  li.textContent = product;
-  cartItems.appendChild(li);
-
-  document.getElementById('cart-count').innerText = cart.length;
-
-  total += 100;
-  document.getElementById('total').innerText = `R$ ${total}`;
-}
-
-function sendMessage() {
-  const input = document.getElementById('user-input');
-  const text = input.value;
-
-  if(text.trim() === '') return;
-
-  const chatBox = document.getElementById('chat-box');
-
-  const userMessage = document.createElement('div');
-  userMessage.classList.add('message', 'user');
-  userMessage.innerText = text;
-  chatBox.appendChild(userMessage);
-
-  let response = 'Não entendi sua pergunta.';
-
-  const lower = text.toLowerCase();
-
-  if(lower.includes('notebook')) {
-    response = 'Recomendo o Notebook Gamer 🚀 Excelente para jogos e desempenho.';
-  }
-  else if(lower.includes('fone')) {
-    response = 'O Fone Bluetooth possui ótima qualidade sonora 🎧';
-  }
-  else if(lower.includes('mouse')) {
-    response = 'O Mouse Gamer é perfeito para alta performance 🖱️';
-  }
-  else if(lower.includes('celular')) {
-    response = 'O Smartphone Pro possui câmera incrível 📱';
-  }
-  else if(lower.includes('barato')) {
-    response = 'O produto mais barato disponível é o Fone Bluetooth.';
-  }
-  else if(lower.includes('melhor')) {
-    response = 'O Notebook Gamer é o produto premium da loja ⭐';
-  }
-
-  setTimeout(() => {
-
-    const botMessage = document.createElement('div');
-    botMessage.classList.add('message', 'bot');
-    botMessage.innerText = response;
-    chatBox.appendChild(botMessage);
-
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-  }, 700);
-
-  input.value = '';
-}
-
-const search = document.getElementById('search');
-
-search.addEventListener('keyup', () => {
-
-  const value = search.value.toLowerCase();
-  const cards = document.querySelectorAll('.card');
-
-  cards.forEach(card => {
-
-    const title = card.querySelector('h3').innerText.toLowerCase();
-
-    if(title.includes(value)) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-
-  });
-
-});
-```
-
----
-
-# Estrutura das Pastas
-
-```bash
-NeoShop-AI/
-│
-├── index.html
-├── style.css
-└── script.js
-```
-
----
-
-# Como rodar
-
-1. Crie uma pasta chamada:
-
-```bash
-NeoShop-AI
-```
-
-2. Crie os arquivos:
-
-* index.html
-* style.css
-* script.js
-
-3. Cole os códigos.
-
-4. Abra o index.html no navegador.
-
----
-
-# Como publicar no GitHub Pages
-
-## Criar repositório
-
-No GitHub:
-
-* New Repository
-* Nome: neoshop-ai
-* Public
-
----
-
-## Upload dos arquivos
-
-Envie:
-
-* index.html
-* style.css
-* script.js
-
----
-
-## Ativar GitHub Pages
-
-Vá em:
-
-* Settings
-* Pages
-* Deploy from branch
-* Main
-* Save
-
-Seu site ficará online.
-
----
-
-# Melhorias futuras
-
-## Você pode adicionar:
-
-* Login
-* Firebase
-* API Gemini
-* Checkout fake
-* Painel admin
-* Dark/Light mode
-* Banco de dados
-* Sistema de avaliações
-* Produtos dinâmicos
-* Recomendações reais com IA
